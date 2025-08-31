@@ -18,7 +18,7 @@ def add_habit():
     description = input("Enter description (optional): ")
     habit = Habit(name=name, description=description)
     habit.save()
-    print(f"✅ Habit '{habit.name}' added!")
+    print(f" Habit '{habit.name}' added!")
 
 def view_habits():
     habits = Habit.get_all()
@@ -103,7 +103,7 @@ def main():
         elif choice == "6":
             view_reports()
         elif choice == "0":
-            print("Goodbye 👋")
+            print("See ya 👋")
             break
         else:
             print("Invalid choice, try again.")

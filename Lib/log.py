@@ -5,7 +5,7 @@ class Log:
     def __init__(self, habit_id, status, notes=None, log_date=None, id=None):
         self.id = id
         self.habit_id = habit_id
-        self.status = status        # e.g. "completed", "missed", "partial"
+        self.status = status        # ( "completed", "missed", "partial")
         self.notes = notes
         self.log_date = log_date or date.today().isoformat()
 

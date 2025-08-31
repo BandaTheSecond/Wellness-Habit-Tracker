@@ -9,7 +9,7 @@ def setup_database():
     conn = get_connection()
     cursor = conn.cursor()
 
-    # Create habits table
+    # Creating habits table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS habits (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,7 +19,7 @@ def setup_database():
         )
     """)
 
-    # Create logs table
+    # Creating logs table
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS logs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
