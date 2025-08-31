@@ -1,6 +1,7 @@
 from db import setup_database
 from Habit import Habit
 from log import Log
+import reports
 
 def menu():
     print("\n=== Wellness Habit Tracker ===")
@@ -9,6 +10,7 @@ def menu():
     print("3. Delete a habit")
     print("4. Log progress")
     print("5. View habit logs")
+    print("6. View reports")
     print("0. Exit")
 
 def add_habit():
@@ -69,6 +71,18 @@ def view_logs():
         for log in logs:
             print(f"- {log.log_date}: {log.status} ({log.notes or 'No notes'})")
 
+def view_reports():
+    habits = Habit.get_all()
+    if not habits:
+        print("No habits found.")
+        return
+
+    print("\n📊 Reports:")
+    for habit in habits:
+        rate = reports.completion_rate(habit.id)
+        streak_val = reports.streak(habit.id)
+        print(f"[{habit.id}] {habit.name} → {rate}% completed | Current streak: {streak_val} days")
+
 def main():
     setup_database()
 
@@ -86,6 +100,8 @@ def main():
             log_progress()
         elif choice == "5":
             view_logs()
+        elif choice == "6":
+            view_reports()
         elif choice == "0":
             print("Goodbye 👋")
             break
