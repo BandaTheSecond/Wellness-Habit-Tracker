@@ -33,6 +33,8 @@ Video url =>(https://youtu.be/Fgb8ovHYI2Y)
 | description       |    └────▶| date              |
 | created_at        |          | progress          |
 +-------------------+          +-------------------+
+
+
 habits: Stores habit details
 logs: Stores daily progress for each habit
 
