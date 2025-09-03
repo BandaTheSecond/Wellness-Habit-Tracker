@@ -1,5 +1,5 @@
 from db import Base, engine, SessionLocal
-from models import User, Habit, Log
+from habits import User, Habit, Log
 import reports
 from datetime import date
 
@@ -13,9 +13,9 @@ def login_or_register(session):
         user = User(username=username)
         session.add(user)
         session.commit()
-        print(f"👤 New user created: {username}")
+        print(f" New user created: {username}")
     else:
-        print(f"👋 Welcome back, {username}")
+        print(f" Welcome back, {username}")
     return user
 
 def menu():
@@ -56,7 +56,7 @@ def delete_habit(session, user):
         if habit:
             session.delete(habit)
             session.commit()
-            print("🗑 Habit deleted.")
+            print("Habit deleted.")
         else:
             print("Habit not found.")
     else:

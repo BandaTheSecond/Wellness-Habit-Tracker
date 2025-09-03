@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models import Log, Habit
+from habits import Log, Habit
 
 def completion_rate(session: Session, habit_id: int) -> float:
     total = session.query(Log).filter_by(habit_id=habit_id).count()

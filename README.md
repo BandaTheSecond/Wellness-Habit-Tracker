@@ -25,14 +25,15 @@ Video url =>(https://youtu.be/Fgb8ovHYI2Y)
 ---
 ## Database schema
 
-+-------------------+          +-------------------+
-|      habits       |          |       logs        |
-+-------------------+          +-------------------+
-| id (PK)           |◄───┐     | id (PK)           |
-| name              |    │     | habit_id (FK)     |
-| description       |    └────▶| date              |
-| created_at        |          | progress          |
-+-------------------+          +-------------------+
++-------------------+          +-------------------+          +-------------------+
+|      users        |          |      habits       |          |       logs        |
++-------------------+          +-------------------+          +-------------------+
+| id (PK)           |◄───┐     | id (PK)           |◄───┐     | id (PK)           |
+| username          |    │     | user_id (FK)      |    │     | habit_id (FK)     |
+| email             |    └────▶| name              |    └────▶| date              |
+| created_at        |          | description       |          | progress          |
++-------------------+          | created_at        |          +-------------------+
+                               +-------------------+
 
 
 habits: Stores habit details
