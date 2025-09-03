@@ -29,10 +29,12 @@ Video url =>(https://youtu.be/Fgb8ovHYI2Y)
 |      users        |          |      habits       |          |       logs        |
 +-------------------+          +-------------------+          +-------------------+
 | id (PK)           |◄───┐     | id (PK)           |◄───┐     | id (PK)           |
-| username          |    │     | user_id (FK)      |    │     | habit_id (FK)     |
-| email             |    └────▶| name              |    └────▶| date              |
-| created_at        |          | description       |          | progress          |
-+-------------------+          | created_at        |          +-------------------+
+| username          |    │     | name              |    │     | habit_id (FK)     |
+| email             |    └────▶| description       |    └────▶| date              |
+| created_at        |          | created_at        |          | progress          |
++-------------------+          | user_id (FK)      |          | notes             |
+                               +-------------------+          +-------------------+
+
                                +-------------------+
 
 
