@@ -1,35 +1,9 @@
-import sqlite3
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-DB_NAME = "wellness.db"
+DATABASE_URL = "sqlite:///wellness.db"
 
-def get_connection():
-    return sqlite3.connect(DB_NAME)
+engine = create_engine(DATABASE_URL, echo=False)
+SessionLocal = sessionmaker(bind=engine)
 
-def setup_database():
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    # Creating habits table
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS habits (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            description TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    """)
-
-    # Creating logs table
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS logs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            habit_id INTEGER,
-            log_date DATE NOT NULL,
-            status TEXT NOT NULL,
-            notes TEXT,
-            FOREIGN KEY (habit_id) REFERENCES habits(id)
-        )
-    """)
-
-    conn.commit()
-    conn.close()
+Base = declarative_base()
